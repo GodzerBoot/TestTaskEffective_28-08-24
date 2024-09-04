@@ -1,7 +1,6 @@
-package com.example.testtaskeffective_29_08_24.fragments
+package com.example.testtaskeffective_29_08_24.ui.signin
 
 
-import android.content.res.Resources
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.testtaskeffective_29_08_24.R
 import com.example.testtaskeffective_29_08_24.databinding.FragmentSigninBinding
+import com.example.testtaskeffective_29_08_24.ui.main.MainFragment
 
 
 class SignInFragment : Fragment() {
@@ -29,7 +28,7 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val field = binding.signinJobSearchField
-
+        val button = binding.signinJobSearchContinueButton
         field.boxStrokeColor = resources.getColor(R.color.grey_2)
         field.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
@@ -48,14 +47,21 @@ class SignInFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {
                 s?.let { if(!android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches()&& it.isNotEmpty()) {
                     field.boxStrokeColor = resources.getColor(R.color.red)
+                    button.isEnabled = false
                 }
                 if (android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() || it.isEmpty()){
                     field.boxStrokeColor = resources.getColor(R.color.grey_1)
+                    button.isEnabled = true
                 }}
 
             }
 
         })
+
+        button.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.fragment_container_view, MainFragment())?.commit()
+        }
     }
 
 }

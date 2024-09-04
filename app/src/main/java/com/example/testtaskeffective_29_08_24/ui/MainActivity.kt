@@ -1,4 +1,4 @@
-package com.example.testtaskeffective_29_08_24
+package com.example.testtaskeffective_29_08_24.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

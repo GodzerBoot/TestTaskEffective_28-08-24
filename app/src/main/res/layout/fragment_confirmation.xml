@@ -23,7 +23,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="24dp"
-            android:text="Отправили код на example@mail.com"
+            android:text="Отправили код на "
             android:textAppearance="@style/title_2"
             android:textColor="@color/white" />
 
@@ -37,13 +37,77 @@
             android:textAppearance="@style/title_3"
             android:textColor="@color/white" />
 
-        <EditText
+        <RelativeLayout
             android:id="@+id/confirmation_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/confirmation_text"
             android:layout_marginTop="16dp"
-            android:background="@color/blue" />
+            >
+            <EditText
+                android:id="@+id/confirmation_code_1"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_corners_button"
+                android:backgroundTint="@color/grey_1"
+                android:hint="*"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textAppearance="@style/title_1"
+                android:textColorHint="@color/grey_3"
+                android:textSize="24dp" />
+            <EditText
+                android:id="@+id/confirmation_code_2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/confirmation_code_1"
+                android:background="@drawable/rounded_corners_button"
+                android:backgroundTint="@color/grey_1"
+                android:hint="*"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textAppearance="@style/title_1"
+                android:textColorHint="@color/grey_3"
+                android:textSize="24dp" />
+            <EditText
+                android:id="@+id/confirmation_code_3"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/confirmation_code_2"
+                android:background="@drawable/rounded_corners_button"
+                android:backgroundTint="@color/grey_1"
+                android:hint="*"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textAppearance="@style/title_1"
+                android:textColorHint="@color/grey_3"
+                android:textSize="24dp" />
+            <EditText
+                android:id="@+id/confirmation_code_4"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/confirmation_code_3"
+                android:background="@drawable/rounded_corners_button"
+                android:backgroundTint="@color/grey_1"
+                android:hint="*"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textAppearance="@style/title_1"
+                android:textColorHint="@color/grey_3"
+                android:textSize="24dp" />
+        </RelativeLayout>
+
 
 
         <com.google.android.material.button.MaterialButton
@@ -57,7 +121,7 @@
             android:layout_weight="1.29"
             android:background="@drawable/rounded_corners_button"
             android:enabled="false"
-            android:text="Продолжить"
+            android:text="Подтвердить"
             android:textAppearance="@style/button_text_2"
             android:textColor="@color/grey_4" />
 

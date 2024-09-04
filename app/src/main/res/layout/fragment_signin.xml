@@ -59,21 +59,18 @@
             app:startIconDrawable="@drawable/nav_responses_icon"
             app:endIconDrawable="@drawable/cross"
             app:endIconMode="clear_text"
-            app:hintEnabled="true"
+            app:hintEnabled="false"
 
             >
             <com.google.android.material.textfield.TextInputEditText
-                android:paddingStart="44dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:backgroundTint="@android:color/transparent"
                 android:hint="Электронная почта или телефон"
                 android:textColorHint="@color/grey_3"
                 android:textAppearance="@style/tab_text"
-
-
-
-
+                android:paddingTop="8dp"
+                android:layout_weight="1"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +92,7 @@
                 android:enabled="false"
                 android:text="Продолжить"
                 android:textAppearance="@style/button_text_2"
-                android:textColor="@color/grey_4" />
+                android:textColor="@color/blue_button_text_states" />
 
             <TextView
                 android:layout_width="0dp"
