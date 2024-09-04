@@ -16,9 +16,11 @@ class MainViewModel(
 ) : ViewModel(), KoinComponent {
     private val _uiState = MutableStateFlow(MainUiState(emptyList()))
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
+
     init {
         getVacancy()
     }
+
     private fun getVacancy() = viewModelScope.launch {
         vacancyRepository.getVacancies()
             .onSuccess {
@@ -27,13 +29,15 @@ class MainViewModel(
                     VacancyItem(
                         it.lookingNumber.toString(),
                         it.title ?: "",
-                        it.salary?.full ?: "",
+                        it.salary?.short ?: "",
                         it.address?.town ?: "",
                         it.company ?: "",
                         it.experience?.previewText ?: "",
                         it.publishedDate ?: ""
                     )
-                }
+                }.subList(0, 2)
+                Log.d("Second", vacancies.toString())
+                _uiState.emit(MainUiState(vacancies))
             }
             .onFailure {
 

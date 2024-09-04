@@ -1,6 +1,7 @@
 package com.example.testtaskeffective_29_08_24.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,9 @@ class MainFragment : Fragment(), KoinComponent {
     }
 
     private fun setupUiStateObserver() {
-        viewModel.uiState.onEach { vacancyAdapter.submitList(it.vacancies) }.launchIn(lifecycleScope)
+        viewModel.uiState.onEach {
+            vacancyAdapter.submitList(it.vacancies)
+        }
+            .launchIn(lifecycleScope)
     }
 }

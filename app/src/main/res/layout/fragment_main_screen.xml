@@ -7,13 +7,12 @@
     android:background="@color/black">
 
 
-
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
         android:id="@+id/main_job_search_field"
         android:layout_width="0dp"
         android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corners_button"
         android:backgroundTint="@color/grey_2"
         android:importantForAutofill="no"
@@ -41,17 +40,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintStart_toEndOf="@+id/main_job_search_field"
-        android:layout_marginTop="16dp"
         android:id="@+id/relativeLayout"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_corners_button"
         android:backgroundTint="@color/grey_2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_job_search_field"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -66,29 +65,29 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_job_search_field"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:itemCount="2"
         tools:listitem="@layout/item_vacancy_box" />
 
 
-
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/main_more_jobs_button"-->
-<!--                style="@style/blueButtonStyle"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="48dp"-->
-<!--                android:layout_marginHorizontal="16dp"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:layout_marginTop="24dp"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:background="@drawable/rounded_corners_button"-->
-<!--                android:text="Ещё 143 вакансии"-->
-<!--                android:textAppearance="@style/button_text_2"-->
-<!--                android:textColor="@color/blue_button_text_states"-->
-<!--                />-->
+    <!--            <com.google.android.material.button.MaterialButton-->
+    <!--                android:id="@+id/main_more_jobs_button"-->
+    <!--                style="@style/blueButtonStyle"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="48dp"-->
+    <!--                android:layout_marginHorizontal="16dp"-->
+    <!--                android:layout_marginStart="16dp"-->
+    <!--                android:layout_marginTop="24dp"-->
+    <!--                android:layout_marginEnd="16dp"-->
+    <!--                android:background="@drawable/rounded_corners_button"-->
+    <!--                android:text="Ещё 143 вакансии"-->
+    <!--                android:textAppearance="@style/button_text_2"-->
+    <!--                android:textColor="@color/blue_button_text_states"-->
+    <!--                />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

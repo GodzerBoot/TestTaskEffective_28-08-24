@@ -11,11 +11,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.testtaskeffective_29_08_24.R
 import com.example.testtaskeffective_29_08_24.databinding.FragmentSigninBinding
+import com.example.testtaskeffective_29_08_24.ui.confirmation.ConfirmationFragment
 import com.example.testtaskeffective_29_08_24.ui.main.MainFragment
 
 
 class SignInFragment : Fragment() {
-    private lateinit var binding : FragmentSigninBinding
+    private lateinit var binding: FragmentSigninBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,6 +30,7 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val field = binding.signinJobSearchField
         val button = binding.signinJobSearchContinueButton
+        var email = ""
         field.boxStrokeColor = resources.getColor(R.color.grey_2)
         field.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
@@ -37,7 +39,13 @@ class SignInFragment : Fragment() {
 
             }
             if (!hasFocus) {
-                field.editText?.setCompoundDrawablesWithIntrinsicBounds(R.drawable.nav_responses_icon, 0, 0, 0)}
+                field.editText?.setCompoundDrawablesWithIntrinsicBounds(
+                    R.drawable.nav_responses_icon,
+                    0,
+                    0,
+                    0
+                )
+            }
         }
         field.editText?.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -45,22 +53,32 @@ class SignInFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
-                s?.let { if(!android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches()&& it.isNotEmpty()) {
-                    field.boxStrokeColor = resources.getColor(R.color.red)
-                    button.isEnabled = false
+                s?.let {
+                    if (!android.util.Patterns.EMAIL_ADDRESS.matcher(it)
+                            .matches() && it.isNotEmpty()
+                    ) {
+                        field.boxStrokeColor = resources.getColor(R.color.red)
+                        button.isEnabled = false
+                    }
+                    if (android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() || it.isEmpty()) {
+                        field.boxStrokeColor = resources.getColor(R.color.grey_1)
+                        email = s.toString()
+                        button.isEnabled = true
+                    }
                 }
-                if (android.util.Patterns.EMAIL_ADDRESS.matcher(it).matches() || it.isEmpty()){
-                    field.boxStrokeColor = resources.getColor(R.color.grey_1)
-                    button.isEnabled = true
-                }}
 
             }
 
         })
 
         button.setOnClickListener {
+            val fragment = ConfirmationFragment()
+            val args = Bundle()
+            args.putString("email", email)
+            fragment.arguments = args
             activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.fragment_container_view, MainFragment())?.commit()
+                ?.replace(R.id.fragment_container_view, fragment)?.addToBackStack("toConfirmation")
+                ?.commit()
         }
     }
 

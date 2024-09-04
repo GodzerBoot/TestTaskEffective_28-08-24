@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.testtaskeffective_29_08_24.ui.main.VacancyItem
 import com.example.testtaskeffective_29_08_24.databinding.ItemVacancyBoxBinding
 
-class VacancyAdapter : ListAdapter<VacancyItem, VacancyViewHolder>(VacancyViewHolder.DIFFABLE){
+class VacancyAdapter : ListAdapter<VacancyItem, VacancyViewHolder>(VacancyViewHolder.DIFFABLE) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacancyViewHolder {
         return VacancyViewHolder(ItemVacancyBoxBinding.inflate(LayoutInflater.from(parent.context)))
     }
