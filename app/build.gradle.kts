@@ -44,6 +44,7 @@ android {
 
 dependencies {
 
+    implementation(libs.cicerone)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.koin.android)
     implementation(libs.squareup.converter.gson)

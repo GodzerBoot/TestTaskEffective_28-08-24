@@ -1,6 +1,7 @@
 package com.example.testtaskeffective_29_08_24.ui.main
 
 import android.util.Log
+import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testtaskeffective_29_08_24.data.vacancy.VacancyRepository
@@ -12,9 +13,9 @@ import org.koin.core.component.KoinComponent
 import java.lang.reflect.Constructor
 
 class MainViewModel(
-    private val vacancyRepository: VacancyRepository,
+    private val vacancyRepository: VacancyRepository
 ) : ViewModel(), KoinComponent {
-    private val _uiState = MutableStateFlow(MainUiState(emptyList()))
+    private val _uiState = MutableStateFlow(MainUiState(null, emptyList(), null))
     val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
 
     init {
@@ -24,7 +25,6 @@ class MainViewModel(
     private fun getVacancy() = viewModelScope.launch {
         vacancyRepository.getVacancies()
             .onSuccess {
-                Log.d("TestTag", it.toString())
                 val vacancies = it.vacancies.map {
                     VacancyItem(
                         it.lookingNumber.toString(),
@@ -36,7 +36,6 @@ class MainViewModel(
                         it.publishedDate ?: ""
                     )
                 }.subList(0, 2)
-                Log.d("Second", vacancies.toString())
                 _uiState.emit(MainUiState(vacancies))
             }
             .onFailure {

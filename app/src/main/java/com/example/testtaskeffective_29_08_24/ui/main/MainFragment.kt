@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.testtaskeffective_29_08_24.ui.main.adapter.VacancyAdapter
 import com.example.testtaskeffective_29_08_24.databinding.FragmentMainScreenBinding
 import kotlinx.coroutines.flow.launchIn
@@ -20,7 +22,7 @@ class MainFragment : Fragment(), KoinComponent {
     private lateinit var binding: FragmentMainScreenBinding
     private val viewModel: MainViewModel by viewModel()
     private val vacancyAdapter = VacancyAdapter()
-
+    val textView = TextView(context)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
