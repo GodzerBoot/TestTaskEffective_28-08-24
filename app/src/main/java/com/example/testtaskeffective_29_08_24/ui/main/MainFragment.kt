@@ -22,7 +22,7 @@ class MainFragment : Fragment(), KoinComponent {
     private lateinit var binding: FragmentMainScreenBinding
     private val viewModel: MainViewModel by viewModel()
     private val vacancyAdapter = VacancyAdapter()
-    val textView = TextView(context)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,7 +39,7 @@ class MainFragment : Fragment(), KoinComponent {
     }
 
     private fun setupVacancyRecyclerView() {
-        binding.recyclerView.adapter = vacancyAdapter
+        binding.recyclerViewMain.adapter = vacancyAdapter
     }
 
     private fun setupUiStateObserver() {

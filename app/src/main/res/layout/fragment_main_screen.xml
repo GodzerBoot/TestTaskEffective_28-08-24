@@ -8,7 +8,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/main_job_search_field"
+        android:id="@+id/tf_main_job_search_field"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -20,7 +20,7 @@
         app:endIconDrawable="@drawable/cross"
         app:endIconMode="clear_text"
         app:hintEnabled="false"
-        app:layout_constraintEnd_toStartOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toStartOf="@+id/relative_layout_main_filters"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/nav_search_icon">
@@ -40,7 +40,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/relative_layout_main_filters"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
@@ -50,7 +50,7 @@
         android:background="@drawable/rounded_corners_button"
         android:backgroundTint="@color/grey_2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/main_job_search_field"
+        app:layout_constraintStart_toEndOf="@+id/tf_main_job_search_field"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -63,13 +63,13 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_job_search_field"
+        app:layout_constraintTop_toBottomOf="@+id/tf_main_job_search_field"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:itemCount="2"
         tools:listitem="@layout/item_vacancy_box" />
