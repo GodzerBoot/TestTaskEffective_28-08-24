@@ -1,7 +1,6 @@
 package com.example.testtaskeffective_29_08_24.data.vacancy
 
 
-import com.example.testtaskeffective_29_08_24.data.vacancy.VacancyResponce
 import retrofit2.http.GET
 
 

@@ -7,12 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.example.testtaskeffective_29_08_24.R
 import com.example.testtaskeffective_29_08_24.databinding.FragmentConfirmationBinding
 import com.example.testtaskeffective_29_08_24.ui.main.MainFragment
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 
 class ConfirmationFragment : Fragment() {
     private lateinit var binding: FragmentConfirmationBinding
