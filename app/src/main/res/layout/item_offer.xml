@@ -19,7 +19,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:background="@drawable/round_button"
-            android:backgroundTint="@color/dark_blue"
+            tools:backgroundTint="@color/dark_blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="10dp"
@@ -30,7 +30,6 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/pin_drop"
-                app:tint="@color/blue"
                 android:layout_gravity="center"/>
         </LinearLayout>
         <TextView

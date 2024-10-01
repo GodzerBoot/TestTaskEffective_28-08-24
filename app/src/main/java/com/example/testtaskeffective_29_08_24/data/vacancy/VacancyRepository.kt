@@ -6,7 +6,7 @@ import kotlinx.coroutines.withContext
 class VacancyRepository(
     private val vacancyApi: VacancyApi
 ) {
-    suspend fun getVacancies(): Result<VacancyResponce> = withContext(Dispatchers.IO) {
+    suspend fun getVacancies(): Result<VacancyResponse> = withContext(Dispatchers.IO) {
         try {
             Result.success(vacancyApi.getVacancies())
         } catch (e: Exception) {

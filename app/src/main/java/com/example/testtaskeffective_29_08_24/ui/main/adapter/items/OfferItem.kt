@@ -1,9 +1,9 @@
 package com.example.testtaskeffective_29_08_24.ui.main.adapter.items
 
+import com.example.testtaskeffective_29_08_24.domain.vacancies.Offer
+
 data class OfferItem (
-    val drawableId: Int,
-    val iconBackgroundColorId: Int,
-    val isVisibleIcon: Boolean,
+    val type: Offer.OfferType,
     val title: String,
     val titleLines: Int,
     val buttonText: String,

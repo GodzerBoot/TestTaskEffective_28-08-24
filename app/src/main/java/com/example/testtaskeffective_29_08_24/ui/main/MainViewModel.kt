@@ -2,10 +2,11 @@ package com.example.testtaskeffective_29_08_24.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.testtaskeffective_29_08_24.Offer
+import com.example.testtaskeffective_29_08_24.OfferResponse
 import com.example.testtaskeffective_29_08_24.R
-import com.example.testtaskeffective_29_08_24.Vacancy
+import com.example.testtaskeffective_29_08_24.VacancyResponse
 import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenVacanciesUseCase
+import com.example.testtaskeffective_29_08_24.domain.vacancies.Offer
 import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.OfferItem
 import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.OffersItem
 import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.TitleItem
@@ -39,62 +40,43 @@ class MainViewModel(
         _uiState.emit(MainUiState(recyclerViewItems, subRecyclerViewItems)) // updating _uiState
     }
 
-    private fun mapVacancyToVacancyItem(vacancy: Vacancy): VacancyItem {
-        val lookingNumber = vacancy.lookingNumber?.let { "Сейчас просматривает $it человек" } ?: ""
-        val salary = vacancy.salary?.short?.replace(" до ", "-") ?: ""
+    private fun mapVacancyToVacancyItem(vacancyResponse: VacancyResponse): VacancyItem {
+        val lookingNumber = vacancyResponse.lookingNumber?.let { "Сейчас просматривает $it человек" } ?: ""
+        val salary = vacancyResponse.salary?.short?.replace(" до ", "-") ?: ""
         val isVisibleSalary = salary.isNotBlank() && salary.trim().equals("Уровень дохода не указан", true).not()
-        val publishedDate = vacancy.publishedDate?.let { "Опубликовано ${it.slice(listOf(8, 9))} ${getMonth(it.slice(listOf(5, 6)).toInt())}" } ?: ""
+        val publishedDate = vacancyResponse.publishedDate?.let { "Опубликовано ${it.slice(listOf(8, 9))} ${getMonth(it.slice(listOf(5, 6)).toInt())}" } ?: ""
         return VacancyItem(
             lookingNumber = lookingNumber,
             isVisibleLookingNumber = lookingNumber.isNotBlank(),
-            title = vacancy.title ?: "",
-            isVisibleTitle = vacancy.title.isNullOrBlank().not(),
+            title = vacancyResponse.title ?: "",
+            isVisibleTitle = vacancyResponse.title.isNullOrBlank().not(),
             salary = salary,
             isVisibleSalary = isVisibleSalary,
-            town = vacancy.address?.town ?: "",
-            isVisibleTown = vacancy.address?.town.isNullOrBlank().not(),
-            company = vacancy.company ?: "",
-            isVisibleCompany = vacancy.company.isNullOrBlank().not(),
-            experience = vacancy.experience?.previewText ?: "",
-            isVisibleExperience = vacancy.experience?.previewText.isNullOrBlank().not(),
+            town = vacancyResponse.address?.town ?: "",
+            isVisibleTown = vacancyResponse.address?.town.isNullOrBlank().not(),
+            company = vacancyResponse.company ?: "",
+            isVisibleCompany = vacancyResponse.company.isNullOrBlank().not(),
+            experience = vacancyResponse.experience?.previewText ?: "",
+            isVisibleExperience = vacancyResponse.experience?.previewText.isNullOrBlank().not(),
             publishedDate = publishedDate,
             isVisiblePublishedDate = publishedDate.isNotBlank(),
         )
     }
 
     private fun mapOfferToOfferItem(offer: Offer): OfferItem {
-        val buttonText = if (offer.button != null && offer.button!!.text.isNullOrBlank().not()) {
-            offer.button!!.text!!
+        val buttonText = if (offer.button != null && offer.button.text.isNullOrBlank().not()) {
+            offer.button.text!!
         } else ""
         val isVisibleButton = buttonText.isNotBlank()
         val titleLines = if (buttonText.isNotBlank()) 2 else 3
-        var drawableId = 0
-        var iconBackgroundColorId = 0
-        var isVisibleIcon = true
-        when (offer.id){
-            "near_vacancies" -> {
-                drawableId = R.drawable.pin_drop
-                iconBackgroundColorId = R.color.dark_blue
-            }
-            "level_up_resume" -> {
-                drawableId = R.drawable.level_up_resume_icon
-                iconBackgroundColorId = R.color.dark_green
-            }
-            "temporary_job" -> {
-                drawableId = R.drawable.temporary_job_icon
-                iconBackgroundColorId = R.color.dark_green
-            }
-            else -> isVisibleIcon = false
-        }
+
         return OfferItem(
-            drawableId = drawableId,
-            iconBackgroundColorId = iconBackgroundColorId,
-            isVisibleIcon = isVisibleIcon,
-            title = offer.title ?: "",
+            type = offer.type,
+            title = offer.title,
             titleLines = titleLines,
             buttonText = buttonText,
             isVisibleButton = isVisibleButton,
-            link = offer.link ?: ""
+            link = offer.link
         )
     }
 

@@ -6,14 +6,17 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.example.testtaskeffective_29_08_24.R
 import com.example.testtaskeffective_29_08_24.databinding.FragmentConfirmationBinding
-import com.example.testtaskeffective_29_08_24.ui.main.MainFragment
+import com.example.testtaskeffective_29_08_24.ui.Screens
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.Router
+import org.koin.android.ext.android.inject
 
 class ConfirmationFragment : Fragment() {
     private lateinit var binding: FragmentConfirmationBinding
-
+    private val cicerone: Cicerone<Router> by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,66 +31,44 @@ class ConfirmationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.tvConfirmationTitle.text = "Отправили код на " + this.arguments?.getString("email")
 
-        binding.etConfirmationCode1.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null) {
-                    if (s.isNotEmpty()) binding.etConfirmationCode2.requestFocus()
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-
-        })
-
-        binding.etConfirmationCode2.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null) {
-                    if (s.isNotEmpty()) binding.etConfirmationCode3.requestFocus()
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-
-        })
-
-        binding.etConfirmationCode3.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null) {
-                    if (s.isNotEmpty()) binding.etConfirmationCode4.requestFocus()
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-
-        })
-
-        binding.etConfirmationCode4.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s != null) {
-                    binding.btnConfirmation.isEnabled =
-                        binding.etConfirmationCode1.text.isNotEmpty() && binding.etConfirmationCode2.text.isNotEmpty() && binding.etConfirmationCode3.text.isNotEmpty() && binding.etConfirmationCode4.text.isNotEmpty()
-                }
-            }
-
-            override fun afterTextChanged(s: Editable?) {}
-
-        })
+        binding.etConfirmationCode1.addTextChangedListener(getTextWatcher(binding, binding.etConfirmationCode2))
+        binding.etConfirmationCode2.addTextChangedListener(getTextWatcher(binding, binding.etConfirmationCode3))
+        binding.etConfirmationCode3.addTextChangedListener(getTextWatcher(binding, binding.etConfirmationCode4))
+        binding.etConfirmationCode4.addTextChangedListener(getTextWatcher(binding, null))
 
 
         binding.btnConfirmation.setOnClickListener {
-            activity?.supportFragmentManager?.beginTransaction()
-                ?.replace(R.id.fragment_container_view, MainFragment())?.addToBackStack("toMain")
-                ?.commit()
+            cicerone.router.navigateTo(Screens.main())
         }
     }
 
+    private fun getTextWatcher(
+        binding: FragmentConfirmationBinding,
+        nextField: EditText?,
+    ): TextWatcher {
+        return object : TextWatcher {
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s != null) {
+                    if (s.isNotBlank() && nextField != null) nextField.requestFocus()
+                    binding.btnConfirmation.isEnabled =
+                        binding.etConfirmationCode1.text.isNotBlank() && binding.etConfirmationCode2.text.isNotBlank() && binding.etConfirmationCode3.text.isNotBlank() && binding.etConfirmationCode4.text.isNotBlank()
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        }
+    }
+
+    companion object {
+        fun newInstance(email: String): ConfirmationFragment {
+            val args = Bundle()
+            args.putString("email", email)
+            val fragment = ConfirmationFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
 }

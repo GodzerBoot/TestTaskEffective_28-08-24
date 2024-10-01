@@ -3,7 +3,7 @@ package com.example.testtaskeffective_29_08_24
 import com.google.gson.annotations.SerializedName
 
 
-data class Vacancy(
+data class VacancyResponse(
 
     @SerializedName("id") var id: String? = null,
     @SerializedName("lookingNumber") var lookingNumber: Int? = null,

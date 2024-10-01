@@ -4,6 +4,7 @@ import com.example.testtaskeffective_29_08_24.data.vacancy.VacancyApi
 import com.example.testtaskeffective_29_08_24.data.vacancy.VacancyRepository
 import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenVacanciesUseCase
 import com.example.testtaskeffective_29_08_24.ui.main.MainViewModel
+import com.github.terrakok.cicerone.Cicerone
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -18,6 +19,7 @@ val appModules = module {
     single { VacancyRepository(get()) }
     factory { GetMainScreenVacanciesUseCase(get()) }
     viewModel { MainViewModel(get()) }
+    single { Cicerone.create() }
 
 }
 

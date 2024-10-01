@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.testtaskeffective_29_08_24.databinding.FragmentMainScreenBinding
-import com.example.testtaskeffective_29_08_24.ui.main.adapter.OfferAdapter
 import com.example.testtaskeffective_29_08_24.ui.main.adapter.VacancyAdapter
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -18,7 +17,6 @@ class MainFragment : Fragment(), KoinComponent {
     private lateinit var binding: FragmentMainScreenBinding
     private val viewModel: MainViewModel by viewModel()
     private val vacancyAdapter = VacancyAdapter()
-    private val offerAdapter = OfferAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
