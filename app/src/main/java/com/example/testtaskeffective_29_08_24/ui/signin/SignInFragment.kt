@@ -1,7 +1,6 @@
 package com.example.testtaskeffective_29_08_24.ui.signin
 
 
-import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.core.os.BuildCompat
 import androidx.fragment.app.Fragment
 import com.example.testtaskeffective_29_08_24.AppConstants
 import com.example.testtaskeffective_29_08_24.R

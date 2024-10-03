@@ -8,7 +8,6 @@ import com.example.testtaskeffective_29_08_24.R
 import com.example.testtaskeffective_29_08_24.databinding.ItemOfferBinding
 import com.example.testtaskeffective_29_08_24.domain.vacancies.Offer
 import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.OfferItem
-import java.lang.IllegalArgumentException
 
 class OfferViewHolder(private val binding: ItemOfferBinding) :
     RecyclerView.ViewHolder(binding.root) {

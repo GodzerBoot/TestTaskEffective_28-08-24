@@ -1,7 +1,6 @@
 package com.example.testtaskeffective_29_08_24
 
 import android.app.Application
-import android.content.Context
 import com.example.testtaskeffective_29_08_24.di.appModules
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
