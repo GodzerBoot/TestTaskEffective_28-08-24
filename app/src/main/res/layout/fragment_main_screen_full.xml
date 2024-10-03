@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tf_main_job_search_field"
+        android:id="@+id/tf_main_full_job_search_field"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_corners_button"
         android:backgroundTint="@color/grey_2"
@@ -19,9 +18,10 @@
         android:textAppearance="@style/tab_text"
         app:endIconDrawable="@drawable/cross"
         app:endIconMode="clear_text"
+        app:flow_horizontalStyle="packed"
         app:hintEnabled="false"
-        app:layout_constraintEnd_toStartOf="@+id/relative_layout_main_filters"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/relative_layout_main_full_filters"
+        app:layout_constraintStart_toEndOf="@+id/relative_layout_main_full_back"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/nav_search_icon">
 
@@ -40,7 +40,28 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
-        android:id="@+id/relative_layout_main_filters"
+        android:id="@+id/relative_layout_main_full_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corners_button"
+        android:backgroundTint="@color/grey_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/back_arrow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_main_full_filters"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
@@ -50,7 +71,7 @@
         android:background="@drawable/rounded_corners_button"
         android:backgroundTint="@color/grey_2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tf_main_job_search_field"
+        app:layout_constraintStart_toEndOf="@+id/tf_main_full_job_search_field"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -62,20 +83,18 @@
             android:src="@drawable/filters_icon" />
     </RelativeLayout>
 
+
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_main"
+        android:id="@+id/recycler_view_main_full"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="8dp"
+        android:layout_marginTop="17dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_main_job_search_field"
-        app:layout_constraintVertical_bias="1.0"
-        tools:itemCount="2"
+        app:layout_constraintTop_toBottomOf="@+id/tf_main_full_job_search_field"
+        tools:itemCount="5"
         tools:listitem="@layout/item_vacancy_box" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,43 +1,34 @@
-package com.example.testtaskeffective_29_08_24.ui.main
+package com.example.testtaskeffective_29_08_24.ui.mainfull
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.testtaskeffective_29_08_24.VacancyResponse
-import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenPartialResponseUseCase
-import com.example.testtaskeffective_29_08_24.domain.vacancies.Offer
-import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.ButtonMoreItem
-import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.OfferItem
-import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.OffersItem
-import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.TitleItem
-import com.example.testtaskeffective_29_08_24.ui.main.adapter.items.VacancyItem
+import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenFullVacancyListUseCase
+import com.example.testtaskeffective_29_08_24.ui.mainfull.adapter.items.VacancyItem
+import com.example.testtaskeffective_29_08_24.ui.mainfull.adapter.items.HeaderItem
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 
-class MainViewModel(
-    private val useCase: GetMainScreenPartialResponseUseCase
+class MainFullViewModel(
+    private val useCase: GetMainScreenFullVacancyListUseCase
 ) : ViewModel(), KoinComponent {
-    private val _uiState = MutableStateFlow(MainUiState(emptyList(), emptyList()))
-    val uiState: StateFlow<MainUiState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(MainFullUiState(emptyList()))
+    val uiState: StateFlow<MainFullUiState> = _uiState.asStateFlow()
 
     init {
         fetchVacancies()
     }
 
     private fun fetchVacancies() = viewModelScope.launch {
-        val triple = useCase()
-        val vacancies = triple.first.map(::mapVacancyToVacancyItem)
-        val offers = triple.second.map(::mapOfferToOfferItem)
-        val subRecyclerViewItems = mutableListOf<OfferItem>()
-        subRecyclerViewItems.addAll(offers)
+        val vacancyResponse = useCase()
+        val vacancies = vacancyResponse.map(::mapVacancyToVacancyItem)
         val recyclerViewItems = mutableListOf<Any>() // making list of items
-        recyclerViewItems.add(OffersItem) // adding offers to recycler
-        recyclerViewItems.add(TitleItem) // adding title to recycler
+        recyclerViewItems.add(HeaderItem(vacancies.size)) // adding title to recycler
         recyclerViewItems.addAll(vacancies) // adding vacancies to recycler
-        recyclerViewItems.add(ButtonMoreItem(triple.third - 2)) // adding button to recycler, supplying it with unseen vacancy quantity
-        _uiState.emit(MainUiState(recyclerViewItems, subRecyclerViewItems)) // updating _uiState
+        _uiState.emit(MainFullUiState(recyclerViewItems)) // updating _uiState
     }
 
     private fun mapVacancyToVacancyItem(vacancyResponse: VacancyResponse): VacancyItem {
@@ -60,23 +51,7 @@ class MainViewModel(
             isVisibleExperience = vacancyResponse.experience?.previewText.isNullOrBlank().not(),
             publishedDate = publishedDate,
             isVisiblePublishedDate = publishedDate.isNotBlank(),
-        )
-    }
-
-    private fun mapOfferToOfferItem(offer: Offer): OfferItem {
-        val buttonText = if (offer.button != null && offer.button.text.isNullOrBlank().not()) {
-            offer.button.text!!
-        } else ""
-        val isVisibleButton = buttonText.isNotBlank()
-        val titleLines = if (buttonText.isNotBlank()) 2 else 3
-
-        return OfferItem(
-            type = offer.type,
-            title = offer.title,
-            titleLines = titleLines,
-            buttonText = buttonText,
-            isVisibleButton = isVisibleButton,
-            link = offer.link
+            isFavorite = vacancyResponse.isFavorite
         )
     }
 
