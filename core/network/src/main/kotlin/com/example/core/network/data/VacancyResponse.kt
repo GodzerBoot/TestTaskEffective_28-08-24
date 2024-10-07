@@ -1,4 +1,4 @@
-package com.example.testtaskeffective_29_08_24
+package com.example.core.network.data
 
 import com.google.gson.annotations.SerializedName
 
@@ -20,4 +20,4 @@ data class VacancyResponse(
     @SerializedName("responsibilities") val responsibilities: String?,
     @SerializedName("questions") val questions: ArrayList<String>,
 
-)
+    )

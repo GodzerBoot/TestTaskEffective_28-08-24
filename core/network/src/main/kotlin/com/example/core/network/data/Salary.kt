@@ -1,4 +1,4 @@
-package com.example.testtaskeffective_29_08_24
+package com.example.core.network.data
 
 import com.google.gson.annotations.SerializedName
 

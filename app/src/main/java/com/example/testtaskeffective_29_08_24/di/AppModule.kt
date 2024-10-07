@@ -3,11 +3,10 @@ package com.example.testtaskeffective_29_08_24.di
 import com.example.core.navigation.Screens
 import com.example.core.network.data.rasponse.ResponseApi
 import com.example.core.network.data.rasponse.ResponseRepository
+import com.example.features.main_screen.domain.GetMainScreenResponseUseCase
+import com.example.features.main_screen.ui.MainScreenViewModel
 import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenFullVacancyListUseCase
-import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenPartialResponseUseCase
 import com.example.testtaskeffective_29_08_24.ui.ScreensImpl
-import com.example.testtaskeffective_29_08_24.ui.main.MainViewModel
-import com.example.testtaskeffective_29_08_24.ui.mainfull.MainFullViewModel
 import com.github.terrakok.cicerone.Cicerone
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -21,10 +20,9 @@ val appModules = module {
     single<Retrofit> { configureRetrofit() }
     single { get<Retrofit>().create(ResponseApi::class.java) }
     single { ResponseRepository(get()) }
-    factory { GetMainScreenPartialResponseUseCase(get()) }
+    factory { GetMainScreenResponseUseCase(get()) }
     factory { GetMainScreenFullVacancyListUseCase(get()) }
-    viewModel { MainViewModel(get()) }
-    viewModel { MainFullViewModel(get()) }
+    viewModel { MainScreenViewModel(get()) }
     single { Cicerone.create() }
     single<Screens> { ScreensImpl() }
 

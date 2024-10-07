@@ -44,8 +44,9 @@ android {
 
 dependencies {
     implementation(project(":core:navigation"))
-    implementation(project(":features:login"))
     implementation(project(":core:network"))
+    implementation(project(":features:login"))
+    implementation(project(":features:main-screen"))
 
     implementation(libs.cicerone)
     implementation(libs.kotlinx.coroutines.android)

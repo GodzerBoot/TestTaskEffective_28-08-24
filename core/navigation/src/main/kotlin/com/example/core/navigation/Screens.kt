@@ -6,5 +6,4 @@ interface Screens {
     fun signIn(): FragmentScreen
     fun main(): FragmentScreen
     fun conformation(email: String): FragmentScreen
-    fun mainFull(): FragmentScreen
 }

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/main_vacancy_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corners_button"
+        android:backgroundTint="@color/grey_2">
+
+        <LinearLayout
+            android:id="@+id/main_vacancy_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/vacancy_looking_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сейчас просматривает 1 человек"
+                android:textAppearance="@style/text_1"
+                android:textColor="@color/green" />
+
+            <TextView
+                android:id="@+id/vacancy_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="UI/UX Designer"
+                android:textAppearance="@style/title_3"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/vacancy_salary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="1500-2900 Br"
+                android:textAppearance="@style/title_1"
+                android:textColor="@color/white"
+                android:textSize="24dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/vacancy_subtable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/vacancy_subtable_town"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Минск"
+                    android:textAppearance="@style/text_1"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:id="@+id/vacancy_subtable_company"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:drawableEnd="@drawable/check"
+                    android:drawablePadding="10dp"
+                    android:text="Еком Дизайн"
+                    android:textAppearance="@style/text_1"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/vacancy_experience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/suitcase"
+                android:drawablePadding="8dp"
+                android:text="Опыт от 1 года до 3 лет"
+                android:textAppearance="@style/text_1"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/vacancy_published_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Опубликовано 20 февраля"
+                android:textAppearance="@style/text_1"
+                android:textColor="@color/grey_3" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/vacancy_favorite_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/nav_favourite_icon" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/vacancy_respond_button"
+            style="@style/greenButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/main_vacancy_table"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/round_button"
+            android:minHeight="0dp"
+            android:text="Откликнуться"
+            android:textAppearance="@style/button_text_2" />
+
+    </RelativeLayout>
+</FrameLayout>
