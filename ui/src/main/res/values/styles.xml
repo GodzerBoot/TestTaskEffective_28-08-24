@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="blueButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/blue_button_states</item>
+        <item name="android:textColor">@color/blue_button_text_states</item>
+    </style>
+    <style name="greenButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/green</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+</resources>

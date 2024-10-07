@@ -10,8 +10,6 @@ import org.koin.core.context.startKoin
 
 class App : Application() {
     private val cicerone : Cicerone<Router> by inject()
-    val router get() = cicerone.router
-    val navigatorHolder get() = cicerone.getNavigatorHolder()
 
     override fun onCreate() {
         super.onCreate()
