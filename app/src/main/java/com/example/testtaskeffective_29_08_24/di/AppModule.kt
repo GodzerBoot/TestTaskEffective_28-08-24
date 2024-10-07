@@ -1,9 +1,11 @@
 package com.example.testtaskeffective_29_08_24.di
 
+import com.example.core.navigation.Screens
 import com.example.testtaskeffective_29_08_24.data.rasponse.ResponseApi
 import com.example.testtaskeffective_29_08_24.data.rasponse.ResponseRepository
 import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenFullVacancyListUseCase
 import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenPartialResponseUseCase
+import com.example.testtaskeffective_29_08_24.ui.ScreensImpl
 import com.example.testtaskeffective_29_08_24.ui.main.MainViewModel
 import com.example.testtaskeffective_29_08_24.ui.mainfull.MainFullViewModel
 import com.github.terrakok.cicerone.Cicerone
@@ -24,6 +26,7 @@ val appModules = module {
     viewModel { MainViewModel(get()) }
     viewModel { MainFullViewModel(get()) }
     single { Cicerone.create() }
+    single<Screens> { ScreensImpl() }
 
 }
 

@@ -43,7 +43,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":ui"))
+    implementation(project(":core:navigation"))
+    implementation(project(":login"))
 
     implementation(libs.cicerone)
     implementation(libs.kotlinx.coroutines.android)

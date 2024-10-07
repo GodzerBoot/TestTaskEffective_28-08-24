@@ -22,4 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "TestTaskEffective_29-08-24"
 include(":app")
 include(":login")
-include(":ui")
+include(":core:navigation")

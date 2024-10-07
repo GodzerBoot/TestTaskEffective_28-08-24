@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml:2:13-83
+INJECTED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml:2:13-83
+	package
+		INJECTED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml
+	xmlns:android
+		ADDED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml:2:23-81
+uses-sdk
+INJECTED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml reason: use-sdk injection requested
+INJECTED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml
+INJECTED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml
+	android:targetSdkVersion
+		INJECTED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml
+	android:minSdkVersion
+		INJECTED from D:\Android\TestTaskEffective_290824\core\navigation\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest2531603055753931140.xml
