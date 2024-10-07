@@ -1,4 +1,4 @@
-package com.example.login.confirmation
+package com.example.features.login.confirmation
 
 import android.os.Bundle
 import android.text.Editable
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.example.core.navigation.Screens
-import com.example.login.databinding.FragmentConfirmationBinding
+import com.example.features.login.databinding.FragmentConfirmationBinding
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 import org.koin.android.ext.android.inject

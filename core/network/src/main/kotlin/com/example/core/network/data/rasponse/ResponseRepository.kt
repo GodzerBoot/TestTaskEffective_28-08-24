@@ -1,4 +1,4 @@
-package com.example.testtaskeffective_29_08_24.data.rasponse
+package com.example.core.network.data.rasponse
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

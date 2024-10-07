@@ -1,8 +1,8 @@
 package com.example.testtaskeffective_29_08_24.di
 
 import com.example.core.navigation.Screens
-import com.example.testtaskeffective_29_08_24.data.rasponse.ResponseApi
-import com.example.testtaskeffective_29_08_24.data.rasponse.ResponseRepository
+import com.example.core.network.data.rasponse.ResponseApi
+import com.example.core.network.data.rasponse.ResponseRepository
 import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenFullVacancyListUseCase
 import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenPartialResponseUseCase
 import com.example.testtaskeffective_29_08_24.ui.ScreensImpl

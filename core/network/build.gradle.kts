@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.login"
+    namespace = "com.example.core.network"
     compileSdk = 34
 
     defaultConfig {
@@ -30,18 +30,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(":core:navigation"))
-
-    implementation(libs.cicerone)
+    implementation(libs.kotlinx.coroutines.android)
     implementation(libs.koin.android)
+    implementation(libs.squareup.converter.gson)
+    implementation(libs.retrofit)
 
-    implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

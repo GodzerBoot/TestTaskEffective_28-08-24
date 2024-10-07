@@ -1,4 +1,4 @@
-package com.example.login.signin
+package com.example.features.login.signin
 
 
 import android.os.Bundle
@@ -10,8 +10,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.core.navigation.Screens
-import com.example.login.R
-import com.example.login.databinding.FragmentSigninBinding
+import com.example.features.login.R
+import com.example.features.login.databinding.FragmentSigninBinding
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.Router
 import org.koin.android.ext.android.inject

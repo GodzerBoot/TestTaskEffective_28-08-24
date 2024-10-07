@@ -1,6 +1,6 @@
 package com.example.testtaskeffective_29_08_24.domain.vacancies
 
-import com.example.testtaskeffective_29_08_24.data.OfferButton
+import com.example.core.network.data.OfferButton
 
 data class Offer(
     val type: OfferType,
