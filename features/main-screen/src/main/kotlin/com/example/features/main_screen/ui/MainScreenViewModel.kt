@@ -1,21 +1,26 @@
 package com.example.features.main_screen.ui
 
+import android.view.View.OnClickListener
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.features.main_screen.domain.Offer
-import com.example.features.main_screen.ui.adapter.items.ButtonMoreItem
-import com.example.features.main_screen.ui.adapter.items.OfferItem
-import com.example.features.main_screen.ui.adapter.items.OffersItem
-import com.example.features.main_screen.ui.adapter.items.TitleItem
-import com.example.features.main_screen.ui.adapter.items.VacancyItem
+import com.example.core.navigation.Screens
 import com.example.core.network.data.VacancyResponse
 import com.example.features.main_screen.domain.GetMainScreenResponseUseCase
-import com.example.features.main_screen.ui.adapter.items.HeaderItem
+import com.example.features.main_screen.domain.Offer
+import com.example.features.main_screen.ui.adapter.item.ButtonMoreItem
+import com.example.features.main_screen.ui.adapter.item.HeaderItem
+import com.example.features.main_screen.ui.adapter.item.OfferItem
+import com.example.features.main_screen.ui.adapter.item.OffersItem
+import com.example.features.main_screen.ui.adapter.item.TitleItem
+import com.example.features.main_screen.ui.adapter.item.VacancyItem
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 import java.time.LocalDate
 
 class MainScreenViewModel(
@@ -23,7 +28,8 @@ class MainScreenViewModel(
 ) : ViewModel(), KoinComponent {
     private val _uiState = MutableStateFlow(MainScreenUiState(emptyList(), emptyList()))
     val uiState: StateFlow<MainScreenUiState> = _uiState.asStateFlow()
-
+    private val cicerone: Cicerone<Router> by inject()
+    private val screens: Screens by inject()
     init {
         fetchVacancies()
     }
@@ -57,6 +63,11 @@ class MainScreenViewModel(
         val salary = vacancyResponse.salary?.short?.replace(" до ", "-") ?: ""
         val isVisibleSalary = salary.isNotBlank() && salary.trim().equals("Уровень дохода не указан", true).not()
         val publishedDate = vacancyResponse.publishedDate?.let { "Опубликовано ${LocalDate.parse(it).dayOfMonth} ${getMonth(LocalDate.parse(it).month.value)}" } ?: ""
+
+        val onClickListener = OnClickListener {
+            cicerone.router.navigateTo(screens.vacancy(vacancyResponse))
+        }
+
         return VacancyItem(
             lookingNumber = lookingNumber,
             isVisibleLookingNumber = lookingNumber.isNotBlank(),
@@ -72,6 +83,7 @@ class MainScreenViewModel(
             isVisibleExperience = vacancyResponse.experience?.previewText.isNullOrBlank().not(),
             publishedDate = publishedDate,
             isVisiblePublishedDate = publishedDate.isNotBlank(),
+            onClickListenerToVacancy = onClickListener,
         )
     }
     private fun mapOfferToOfferItem(offer: Offer): OfferItem {

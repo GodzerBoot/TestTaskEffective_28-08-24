@@ -1,7 +1,6 @@
 package com.example.features.main_screen.ui.adapter
 
 import android.view.LayoutInflater
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,12 +10,12 @@ import com.example.features.main_screen.databinding.ItemClHeaderBinding
 import com.example.features.main_screen.databinding.ItemRvOffersBinding
 import com.example.features.main_screen.databinding.ItemTitleBinding
 import com.example.features.main_screen.databinding.ItemVacancyBoxBinding
-import com.example.features.main_screen.ui.adapter.items.ButtonMoreItem
-import com.example.features.main_screen.ui.adapter.items.HeaderItem
-import com.example.features.main_screen.ui.adapter.items.OfferItem
-import com.example.features.main_screen.ui.adapter.items.OffersItem
-import com.example.features.main_screen.ui.adapter.items.TitleItem
-import com.example.features.main_screen.ui.adapter.items.VacancyItem
+import com.example.features.main_screen.ui.adapter.item.ButtonMoreItem
+import com.example.features.main_screen.ui.adapter.item.HeaderItem
+import com.example.features.main_screen.ui.adapter.item.OfferItem
+import com.example.features.main_screen.ui.adapter.item.OffersItem
+import com.example.features.main_screen.ui.adapter.item.TitleItem
+import com.example.features.main_screen.ui.adapter.item.VacancyItem
 
 
 class VacancyAdapter(

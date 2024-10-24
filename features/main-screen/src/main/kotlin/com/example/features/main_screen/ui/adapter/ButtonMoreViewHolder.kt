@@ -1,10 +1,10 @@
 package com.example.features.main_screen.ui.adapter
 
-import android.view.View.OnClickListener
+import android.annotation.SuppressLint
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.features.main_screen.databinding.ItemBtnMoreBinding
-import com.example.features.main_screen.ui.adapter.items.ButtonMoreItem
+import com.example.features.main_screen.ui.adapter.item.ButtonMoreItem
 
 
 class ButtonMoreViewHolder(
@@ -21,6 +21,7 @@ class ButtonMoreViewHolder(
         if (item.quantityOfVacancies <= 0) binding.btnMoreMain.isVisible = false
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setupText(item: ButtonMoreItem) {
         binding.btnMoreMain.text = "Ещё ${item.quantityOfVacancies} ${item.vacancyWord}"
     }

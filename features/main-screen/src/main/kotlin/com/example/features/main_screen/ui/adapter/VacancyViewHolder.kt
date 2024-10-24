@@ -3,7 +3,7 @@ package com.example.features.main_screen.ui.adapter
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.features.main_screen.databinding.ItemVacancyBoxBinding
-import com.example.features.main_screen.ui.adapter.items.VacancyItem
+import com.example.features.main_screen.ui.adapter.item.VacancyItem
 
 
 class VacancyViewHolder(
@@ -25,5 +25,6 @@ class VacancyViewHolder(
         binding.vacancyExperience.isVisible = item.isVisibleExperience
         binding.vacancyPublishedDate.text = item.publishedDate
         binding.vacancyPublishedDate.isVisible = item.isVisiblePublishedDate
+        binding.mainVacancyOffer.setOnClickListener(item.onClickListenerToVacancy)
     }
 }

@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":features:login"))
     implementation(project(":features:main-screen"))
+    implementation(project(":features:vacancy-screen"))
 
     implementation(libs.cicerone)
     implementation(libs.kotlinx.coroutines.android)

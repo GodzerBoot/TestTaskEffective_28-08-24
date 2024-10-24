@@ -53,11 +53,13 @@
         app:constraint_referenced_ids="iv_favorite_icon, iv_share_icon, iv_watch_icon, iv_back_icon" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_vacancy"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/barrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

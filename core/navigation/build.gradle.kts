@@ -37,6 +37,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core:network"))
+
     implementation(libs.cicerone)
     implementation(libs.koin.android)
 

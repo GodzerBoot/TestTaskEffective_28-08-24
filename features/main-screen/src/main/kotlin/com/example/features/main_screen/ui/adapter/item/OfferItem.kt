@@ -1,4 +1,4 @@
-package com.example.features.main_screen.ui.adapter.items
+package com.example.features.main_screen.ui.adapter.item
 
 import com.example.features.main_screen.domain.Offer
 

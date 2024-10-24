@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.features.main_screen.databinding.ItemOfferBinding
-import com.example.features.main_screen.ui.adapter.items.OfferItem
+import com.example.features.main_screen.ui.adapter.item.OfferItem
 
 
 class OfferAdapter : ListAdapter<OfferItem, OfferViewHolder>(DIFFER) {

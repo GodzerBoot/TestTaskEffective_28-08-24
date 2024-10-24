@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.features.main_screen.R
 import com.example.features.main_screen.databinding.ItemOfferBinding
 import com.example.features.main_screen.domain.Offer
-import com.example.features.main_screen.ui.adapter.items.OfferItem
+import com.example.features.main_screen.ui.adapter.item.OfferItem
 
 
 class OfferViewHolder(private val binding: ItemOfferBinding) :
