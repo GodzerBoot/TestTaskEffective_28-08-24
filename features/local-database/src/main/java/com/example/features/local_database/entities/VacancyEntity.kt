@@ -1,9 +1,12 @@
-package com.example.features.main_screen.ui.adapter.item
+package com.example.features.local_database.entities
 
 import android.view.View.OnClickListener
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-data class VacancyItem (
-    val id: String,
+@Entity("vacancy")
+data class VacancyEntity(
+    @PrimaryKey val id: String,
     val lookingNumber: String,
     val isVisibleLookingNumber: Boolean,
     val title: String,
@@ -20,5 +23,5 @@ data class VacancyItem (
     val isVisiblePublishedDate: Boolean,
     val isFavourite: Boolean,
     val onClickListenerToVacancy: OnClickListener,
-//    val onClickListenerFavourite: (Any) -> Unit
+//    val onClickListenerFavorite: (Any) -> Unit
     )

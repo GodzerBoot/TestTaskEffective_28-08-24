@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.core.navigation.Screens
 import com.example.core.network.data.VacancyResponse
 import com.example.features.vacancy_screen.databinding.FragmentVacancyScreenBinding
 import com.example.features.vacancy_screen.ui.adapter.VacancyScreenAdapter
@@ -16,8 +17,14 @@ import com.example.features.vacancy_screen.ui.adapter.item.OthersItem
 import com.example.features.vacancy_screen.ui.adapter.item.QuestionItem
 import com.example.features.vacancy_screen.ui.adapter.item.QuestionsItem
 import com.example.features.vacancy_screen.ui.adapter.item.ResponsibilitiesItem
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.Router
+import org.koin.android.ext.android.inject
+import org.koin.core.component.inject
 
 class VacancyScreenFragment(private val vacancy: VacancyResponse) : Fragment() {
+    private val cicerone: Cicerone<Router> by inject()
+    private val screens: Screens by inject()
     lateinit var binding: FragmentVacancyScreenBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +41,7 @@ class VacancyScreenFragment(private val vacancy: VacancyResponse) : Fragment() {
         val adapter = VacancyScreenAdapter()
         adapter.submitList(setupViewList(vacancy))
         binding.rvVacancy.adapter = adapter
+        binding.ivBackIcon.setOnClickListener { cicerone.router.backTo(screens.main()) }
     }
 
     private fun setupViewList(vacancy: VacancyResponse): MutableList<Any> {

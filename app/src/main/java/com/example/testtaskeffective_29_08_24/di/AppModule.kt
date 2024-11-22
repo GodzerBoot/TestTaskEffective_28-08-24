@@ -1,8 +1,11 @@
 package com.example.testtaskeffective_29_08_24.di
 
+import android.content.Context
+import androidx.room.Room
 import com.example.core.navigation.Screens
 import com.example.core.network.data.rasponse.ResponseApi
 import com.example.core.network.data.rasponse.ResponseRepository
+import com.example.features.local_database.AppDatabase
 import com.example.features.main_screen.domain.GetMainScreenResponseUseCase
 import com.example.features.main_screen.ui.MainScreenViewModel
 import com.example.testtaskeffective_29_08_24.domain.vacancies.GetMainScreenFullVacancyListUseCase
@@ -25,9 +28,17 @@ val appModules = module {
     viewModel { MainScreenViewModel(get()) }
     single { Cicerone.create() }
     single<Screens> { ScreensImpl() }
-
+    single { buildDatabase(get()) }
+    single { get<AppDatabase>().vacancyDao() }
 }
 
+
+private fun buildDatabase(applicationContext: Context): AppDatabase {
+    return Room.databaseBuilder(
+        applicationContext,
+        AppDatabase::class.java, "favourite-vacancies-database"
+    ).build()
+}
 
 private fun configureGson(): Gson {
     return GsonBuilder().create()

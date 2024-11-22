@@ -30,6 +30,8 @@ class MainScreenViewModel(
     val uiState: StateFlow<MainScreenUiState> = _uiState.asStateFlow()
     private val cicerone: Cicerone<Router> by inject()
     private val screens: Screens by inject()
+//    private val database: AppDatabase by inject()
+//    private val vacancyDao: VacancyDao by inject()
     init {
         fetchVacancies()
     }
@@ -67,8 +69,39 @@ class MainScreenViewModel(
         val onClickListener = OnClickListener {
             cicerone.router.navigateTo(screens.vacancy(vacancyResponse))
         }
+//        val onClickListenerFavorite = fun(t: Any) {
+//            val item = t as VacancyItem
+//            fun toVacancyEntity(vacancyItem: VacancyItem, isFavourite: Boolean) : VacancyEntity {
+//                return VacancyEntity(
+//                    id = vacancyItem.id,
+//                    lookingNumber = vacancyItem.lookingNumber,
+//                    isVisibleLookingNumber = vacancyItem.isVisibleLookingNumber,
+//                    title = vacancyItem.title,
+//                    isVisibleTitle = vacancyItem.isVisibleTitle,
+//                    salary = vacancyItem.salary,
+//                    isVisibleSalary = vacancyItem.isVisibleSalary,
+//                    town = vacancyItem.town,
+//                    isVisibleTown = vacancyItem.isVisibleTown,
+//                    company = vacancyItem.company,
+//                    isVisibleCompany = vacancyItem.isVisibleCompany,
+//                    experience = vacancyItem.experience,
+//                    isVisibleExperience = vacancyItem.isVisibleExperience,
+//                    publishedDate = vacancyItem.publishedDate,
+//                    isVisiblePublishedDate = vacancyItem.isVisiblePublishedDate,
+//                    isFavourite = isFavourite,
+//                    onClickListenerToVacancy = vacancyItem.onClickListenerToVacancy,
+//                    vacancyItem.onClickListenerFavourite,
+//                )
+//            }
+//            if (item.isFavourite){
+//                vacancyDao.delete(item.id)
+//            } else{
+//                vacancyDao.insertAll(toVacancyEntity(item, true))
+//            }
+//        }
 
         return VacancyItem(
+            id = vacancyResponse.id,
             lookingNumber = lookingNumber,
             isVisibleLookingNumber = lookingNumber.isNotBlank(),
             title = vacancyResponse.title ?: "",
@@ -83,7 +116,9 @@ class MainScreenViewModel(
             isVisibleExperience = vacancyResponse.experience?.previewText.isNullOrBlank().not(),
             publishedDate = publishedDate,
             isVisiblePublishedDate = publishedDate.isNotBlank(),
+            isFavourite = vacancyResponse.isFavorite,
             onClickListenerToVacancy = onClickListener,
+//            onClickListenerFavourite = onClickListenerFavorite,
         )
     }
     private fun mapOfferToOfferItem(offer: Offer): OfferItem {

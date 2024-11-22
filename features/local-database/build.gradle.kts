@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.features.main_screen"
+    namespace = "com.example.features.local_database"
     compileSdk = 34
 
     defaultConfig {
@@ -30,19 +30,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures{
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(":core:navigation"))
-    implementation(project(":core:network"))
-    implementation(project(":features:local-database"))
 
-    implementation(libs.koin.android)
-    implementation(libs.cicerone)
-
+    implementation("androidx.room:room-runtime:2.6.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
